@@ -1,6 +1,7 @@
 package com.example.a17controlespersonalizados_ii;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,11 +32,25 @@ public class ControlLogin extends ConstraintLayout {
     public ControlLogin(Context context, AttributeSet attrs) {
         super(context, attrs);
         inicializar();
+
+        modificarAtributosXML(attrs);
     }
 
     public ControlLogin(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         inicializar();
+
+        modificarAtributosXML(attrs);
+    }
+
+    private void modificarAtributosXML(AttributeSet attrs) {
+        TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.ControlLogin);
+
+        String textoBoton = a.getString(R.styleable.ControlLogin_login_text);
+
+        btnLogin.setText(textoBoton);
+
+        a.recycle();
     }
 
     private void inicializar() {
